@@ -24,7 +24,7 @@ class Fornecedor(models.Model):
         return self.razao_social
 
 
-class Produto(models.Model):
+class Material(models.Model):
     CATEGORIA_CHOICES = (
         ('estocavel', 'Estocável'),
         ('n_estocavel', 'Não estocável'),
@@ -34,11 +34,22 @@ class Produto(models.Model):
 
     nome = models.CharField(max_length=255)
     unidade_medida = models.ForeignKey('UnidadeMedida', on_delete=models.PROTECT)
-    valor = models.DecimalField(max_digits=9, decimal_places=2)
-    validade = models.CharField(max_length=255)
-    quantidade = models.CharField(max_length=255)
     categoria = models.CharField(max_length=255, choices=CATEGORIA_CHOICES)
-    observacao = models.TextField()
 
     def __str__(self):
-        return self.nome_produto
+        return self.nome
+
+
+class ItemEntrada(models.Model):
+    """Será o material pertencente a entrada de um nova compra. O funcionário
+       do almoxarifado sempre informar o material, a quantidade e o valor de
+       aquisicao.
+    """
+
+
+class Entrada(models.Model):
+    """É o cadastro de uma nova compra realizada pela UCAM. O funcionario
+       ira cadastrar a nota fiscal com data, fornecedor e ira informar os
+       itens adquiridos
+       ** pesquisar sobre InlineModelAdmin / StackedInline **
+    """
