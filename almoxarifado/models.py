@@ -4,6 +4,14 @@ from __future__ import unicode_literals
 from django.db import models
 
 
+class UnidadeMedida(models.Model):
+    nome = models.CharField(max_length=100, unique=True)
+    abreviacao = models.CharField(max_length=3, unique=True)
+
+    def __str__(self):
+        return "{} ({})".format(self.nome, self.abreviacao)
+
+
 class Fornecedor(models.Model):
     razao_social = models.CharField(max_length=255)
     segmento = models.CharField(max_length=255)
@@ -25,8 +33,8 @@ class Produto(models.Model):
     )
 
     nome = models.CharField(max_length=255)
-    unidade_medida = models.CharField(max_length=255)
-    custo = models.CharField(max_length=255)
+    unidade_medida = models.ForeignKey('UnidadeMedida', on_delete=models.PROTECT)
+    valor = models.DecimalField(max_digits=9, decimal_places=2)
     validade = models.CharField(max_length=255)
     quantidade = models.CharField(max_length=255)
     categoria = models.CharField(max_length=255, choices=CATEGORIA_CHOICES)
