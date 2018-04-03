@@ -41,27 +41,28 @@ class Material(models.Model):
 
 
 class ItemEntrada(models.Model):
-    material = models.ForeignKey('Material', on_delete=models.PROTECT)
-    valor = models.DecimalField(max_digits=9, decimal_places=2)
-    quantidade = models.IntegerField()
     """Será o material pertencente a entrada de um nova compra. O funcionário
        do almoxarifado sempre informar o material, a quantidade e o valor de
        aquisicao.
     """
+    entrada = models.ForeignKey('Entrada', on_delete=models.PROTECT)
+    material = models.ForeignKey('Material', on_delete=models.PROTECT)
+    valor = models.DecimalField(max_digits=9, decimal_places=2)
+    quantidade = models.IntegerField()
+
     def __str__(self):
-        return self.material.nome
+        return "{} ({})".format(self.material.nome, self.entrada.nota_fiscal)
 
 
 class Entrada(models.Model):
-    itens = models.ForeignKey('ItemEntrada', on_delete=models.PROTECT)
-    nota_Fiscal = models.CharField(max_length=255)
-    fornecedor = models.ForeignKey('Fornecedor', on_delete=models.PROTECT)
-    data = models.DateField(null=True, blank=False)
-
     """É o cadastro de uma nova compra realizada pela UCAM. O funcionario
        ira cadastrar a nota fiscal com data, fornecedor e ira informar os
        itens adquiridos
        ** pesquisar sobre InlineModelAdmin / StackedInline **
     """
+    nota_fiscal = models.CharField(max_length=255)
+    fornecedor = models.ForeignKey('Fornecedor', on_delete=models.PROTECT)
+    data = models.DateField(null=True, blank=False)
+
     def __str__(self):
-        return self.nota_Fiscal
+        return self.nota_fiscal

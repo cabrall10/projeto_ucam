@@ -5,16 +5,16 @@ from django.contrib import admin
 
 from .models import Fornecedor, UnidadeMedida, Entrada, ItemEntrada, Material
 
-class ItensAdicionadosTabularInline(admin.TabularInline):
+
+class ItemEntradaAdmin(admin.TabularInline):
     model = ItemEntrada
 
-class EntradaItens(admin.ModelAdmin):
-    inlines = [ItensAdicionadosTabularInline]
-    class Meta:
-        model = Entrada
+
+class EntradaAdmin(admin.ModelAdmin):
+    inlines = (ItemEntradaAdmin,)
 
 admin.site.register(Fornecedor)
 admin.site.register(UnidadeMedida)
-admin.site.register(Entrada, EntradaItens)
+admin.site.register(Entrada, EntradaAdmin)
 admin.site.register(ItemEntrada)
 admin.site.register(Material)

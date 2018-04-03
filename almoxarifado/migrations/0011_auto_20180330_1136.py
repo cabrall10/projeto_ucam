@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='material',
-            name=b'categoria',
+            name='categoria',
             field=models.CharField(choices=[('estocavel', 'Estoc\xe1vel'), ('n_estocavel', 'N\xe3o estoc\xe1vel'), ('cons_geral', 'Consumo geral'), ('manutencao', 'Manuten\xe7\xe3o')], max_length=255),
         ),
     ]
