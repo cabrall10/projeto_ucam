@@ -8,6 +8,9 @@ class UnidadeMedida(models.Model):
     nome = models.CharField(max_length=100, unique=True)
     abreviacao = models.CharField(max_length=3, unique=True)
 
+    class Meta:
+        verbose_name_plural = 'Unidades de Medida'
+
     def __str__(self):
         return "{} ({})".format(self.nome, self.abreviacao)
 
@@ -19,6 +22,9 @@ class Fornecedor(models.Model):
     telefone = models.CharField(max_length=255)
     email = models.EmailField()
     nome_atendente = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name_plural = 'Fornecedores'
 
     def __str__(self):
         return self.razao_social
@@ -35,6 +41,9 @@ class Material(models.Model):
     nome = models.CharField(max_length=255)
     unidade_medida = models.ForeignKey('UnidadeMedida', on_delete=models.PROTECT)
     categoria = models.CharField(max_length=255, choices=CATEGORIA_CHOICES)
+
+    class Meta:
+        verbose_name_plural = 'Materiais'
 
     def __str__(self):
         return self.nome

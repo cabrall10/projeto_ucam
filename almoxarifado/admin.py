@@ -16,5 +16,4 @@ class EntradaAdmin(admin.ModelAdmin):
 admin.site.register(Fornecedor)
 admin.site.register(UnidadeMedida)
 admin.site.register(Entrada, EntradaAdmin)
-admin.site.register(ItemEntrada)
 admin.site.register(Material)
