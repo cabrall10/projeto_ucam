@@ -41,15 +41,27 @@ class Material(models.Model):
 
 
 class ItemEntrada(models.Model):
+    material = models.ForeignKey('Material', on_delete=models.PROTECT)
+    valor = models.DecimalField(max_digits=9, decimal_places=2)
+    quantidade = models.IntegerField()
     """Será o material pertencente a entrada de um nova compra. O funcionário
        do almoxarifado sempre informar o material, a quantidade e o valor de
        aquisicao.
     """
+    def __str__(self):
+        return self.material.nome
 
 
 class Entrada(models.Model):
+    itens = models.ForeignKey('ItemEntrada', on_delete=models.PROTECT)
+    nota_Fiscal = models.CharField(max_length=255)
+    fornecedor = models.ForeignKey('Fornecedor', on_delete=models.PROTECT)
+    data = models.DateField(null=True, blank=False)
+
     """É o cadastro de uma nova compra realizada pela UCAM. O funcionario
        ira cadastrar a nota fiscal com data, fornecedor e ira informar os
        itens adquiridos
        ** pesquisar sobre InlineModelAdmin / StackedInline **
     """
+    def __str__(self):
+        return self.nota_Fiscal
