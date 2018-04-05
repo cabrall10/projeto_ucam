@@ -6,7 +6,7 @@ from django.db import models
 
 class UnidadeMedida(models.Model):
     nome = models.CharField(max_length=100, unique=True)
-    abreviacao = models.CharField(max_length=3, unique=True)
+    abreviacao = models.CharField(max_length=3, unique=True, verbose_name='Abreviação')
 
     class Meta:
         verbose_name_plural = 'Unidades de Medida'
@@ -16,12 +16,12 @@ class UnidadeMedida(models.Model):
 
 
 class Fornecedor(models.Model):
-    razao_social = models.CharField(max_length=255)
+    razao_social = models.CharField(max_length=255, verbose_name='Razão Social')
     segmento = models.CharField(max_length=255)
     logradouro = models.CharField(max_length=255)
     telefone = models.CharField(max_length=255)
     email = models.EmailField()
-    nome_atendente = models.CharField(max_length=255)
+    nome_atendente = models.CharField(max_length=255, verbose_name='Nome do atendente')
 
     class Meta:
         verbose_name_plural = 'Fornecedores'

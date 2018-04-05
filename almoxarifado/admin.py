@@ -12,6 +12,9 @@ class ItemEntradaAdmin(admin.TabularInline):
 
 class EntradaAdmin(admin.ModelAdmin):
     inlines = (ItemEntradaAdmin,)
+    search_fields = ['nota_fiscal', 'fornecedor__razao_social']
+    list_filter = ('data',)
+
 
 admin.site.register(Fornecedor)
 admin.site.register(UnidadeMedida)
