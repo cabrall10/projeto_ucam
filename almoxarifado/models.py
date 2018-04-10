@@ -54,8 +54,8 @@ class ItemEntrada(models.Model):
        do almoxarifado sempre informar o material, a quantidade e o valor de
        aquisicao.
     """
-    entrada = models.ForeignKey('Entrada', on_delete=models.PROTECT)
-    material = models.ForeignKey('Material', on_delete=models.PROTECT)
+    entrada = models.ForeignKey('Entrada', related_name="itemEntrada_material", on_delete=models.PROTECT)
+    material = models.ForeignKey('Material', related_name="itemEntrada_material", on_delete=models.PROTECT)
     valor = models.DecimalField(max_digits=9, decimal_places=2)
     quantidade = models.IntegerField()
 
@@ -70,7 +70,7 @@ class Entrada(models.Model):
        ** pesquisar sobre InlineModelAdmin / StackedInline **
     """
     nota_fiscal = models.CharField(max_length=255)
-    fornecedor = models.ForeignKey('Fornecedor', on_delete=models.PROTECT)
+    fornecedor = models.ForeignKey('Fornecedor', related_name="entradas_fornecedor", on_delete=models.PROTECT)
     data = models.DateField(null=True, blank=False)
 
     def __str__(self):
