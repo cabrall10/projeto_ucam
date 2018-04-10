@@ -8,7 +8,8 @@ from .models import Fornecedor, UnidadeMedida, Entrada, ItemEntrada, Material
 
 class ItemEntradaAdmin(admin.TabularInline):
     model = ItemEntrada
-
+    min_num = 1
+    extra = 0
 
 class EntradaAdmin(admin.ModelAdmin):
     inlines = (ItemEntradaAdmin,)
