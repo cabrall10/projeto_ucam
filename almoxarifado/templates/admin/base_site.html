@@ -1,0 +1,28 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block extrastyle %}
+ <style>
+    #header { background-color: #7D212B; }
+    .module h2, .module caption, .inline-group h2 {
+      background-color: #7f484e;
+    }
+    a:link, a:visited {
+    color: #757575;
+    }
+    div.breadcrumbs {
+    background: #7f484e;
+    color: #aaa;
+    }
+    #changelist-filter li.selected a {
+    color: #7f484e !important;
+    }
+ </style>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Almoxarifado - UCAM</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

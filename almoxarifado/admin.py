@@ -3,15 +3,22 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import Fornecedor, UnidadeMedida, Entrada, ItemEntrada, Material
+from .models.fornecedor import Fornecedor
+from .models.item_entrada import ItemEntrada
+from .models.unidade_medida import UnidadeMedida
+from .models.entrada import Entrada
+from .models.material import Material
+
 
 
 class ItemEntradaAdmin(admin.TabularInline):
+    autocomplete_fields = ['material']
     model = ItemEntrada
     min_num = 1
     extra = 0
 
 class EntradaAdmin(admin.ModelAdmin):
+    autocomplete_fields = ['fornecedor']
     inlines = (ItemEntradaAdmin,)
     search_fields = ['nota_fiscal', 'fornecedor__razao_social', 'itemEntrada_material__material__nome']
     list_filter = ('data',)
