@@ -5,7 +5,7 @@ from django.db import models
 
 
 class PessoaFisica(models.Model):
-    nome = models.Charfield(max_length=255)
+    nome = models.CharField(max_length=255)
     cpf = models.CharField(max_length=255)
     email = models.EmailField()
 

@@ -2,6 +2,8 @@
 
 {% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
+#alterando o html padrão do admin
+
 {% block extrastyle %}
  <style>
     #header { background-color: #7D212B; }
@@ -11,13 +13,31 @@
     a:link, a:visited {
     color: #757575;
     }
+    
     div.breadcrumbs {
     background: #7f484e;
     color: #aaa;
     }
+
     #changelist-filter li.selected a {
     color: #7f484e !important;
     }
+
+    <!-- cor de fundo do campo quantidade da pagina adicionar "item saida" -->
+    input, a.button {
+    background: "white";
+    }
+
+    .button, input[type="submit"],
+    input[type="button"], .submit-row input, a.button {
+    background: #7f484e;
+    }
+
+    .button.default, input[type="submit"].default,
+    .submit-row input.default {
+    background: #7f484e;
+    }
+
  </style>
 {% endblock %}
 

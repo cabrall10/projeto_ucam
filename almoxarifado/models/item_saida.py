@@ -9,5 +9,8 @@ class ItemSaida(models.Model):
     material = models.ForeignKey('Material', on_delete=models.PROTECT)
     quantidade = models.IntegerField()
 
+    class Meta:
+        verbose_name_plural = 'Saida de material'
+
     def __str__(self):
         return "{}".format(self.material.nome)

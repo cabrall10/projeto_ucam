@@ -8,6 +8,9 @@ from .models.item_entrada import ItemEntrada
 from .models.unidade_medida import UnidadeMedida
 from .models.entrada import Entrada
 from .models.material import Material
+from .models.item_saida import ItemSaida
+from .models.pessoa_fisica import PessoaFisica
+from .models.saida import Saida
 
 
 
@@ -41,3 +44,6 @@ admin.site.register(Fornecedor, FornecedorAdmin)
 admin.site.register(UnidadeMedida, UnidadeMedidaAdmin)
 admin.site.register(Entrada, EntradaAdmin)
 admin.site.register(Material, MaterialAdmin)
+admin.site.register(ItemSaida)
+admin.site.register(Saida)
+admin.site.register(PessoaFisica)
