@@ -14,5 +14,8 @@ class Entrada(models.Model):
     fornecedor = models.ForeignKey('Fornecedor', related_name="entradas_fornecedor", on_delete=models.PROTECT)
     data = models.DateField(null=True, blank=False)
 
+    class Meta:
+        verbose_name_plural = 'Entrada de material'
+
     def __str__(self):
         return self.nota_fiscal

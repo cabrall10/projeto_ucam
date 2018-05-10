@@ -9,5 +9,8 @@ class PessoaFisica(models.Model):
     cpf = models.CharField(max_length=255)
     email = models.EmailField()
 
+    class Meta:
+        verbose_name_plural = 'Pessoa fisica'
+
     def __str__(self):
         return self.nome

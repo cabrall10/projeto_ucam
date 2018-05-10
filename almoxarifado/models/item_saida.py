@@ -10,7 +10,7 @@ class ItemSaida(models.Model):
     quantidade = models.IntegerField()
 
     class Meta:
-        verbose_name_plural = 'Saida de material'
+        verbose_name_plural = 'Saída de material'
 
     def __str__(self):
         return "{}".format(self.material.nome)
