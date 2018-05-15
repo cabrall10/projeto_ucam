@@ -11,6 +11,7 @@ from .models.material import Material
 from .models.item_saida import ItemSaida
 from .models.pessoa_fisica import PessoaFisica
 from .models.saida import Saida
+from .models import Estoque
 
 
 
@@ -19,6 +20,17 @@ class ItemEntradaAdmin(admin.TabularInline):
     model = ItemEntrada
     min_num = 1
     extra = 0
+
+class ItemSaidaAdmin(admin.TabularInline):
+    autocomplete_fields = ['material']
+    model = ItemSaida
+    min_num = 1
+    extra = 0
+
+class SaidaAdmin(admin.ModelAdmin):
+    autocomplete_fields = ['solicitante']
+    inlines = (ItemSaidaAdmin,)
+    list_filter = ('data',)
 
 class EntradaAdmin(admin.ModelAdmin):
     autocomplete_fields = ['fornecedor']
@@ -38,12 +50,15 @@ class UnidadeMedidaAdmin(admin.ModelAdmin):
     search_fields= ['nome', 'abreviacao']
     list_filter = ('abreviacao',)
 
+class PessoaFisicaAdmin(admin.ModelAdmin):
+    search_fields = ['nome', 'cpf']
+
 
 
 admin.site.register(Fornecedor, FornecedorAdmin)
 admin.site.register(UnidadeMedida, UnidadeMedidaAdmin)
 admin.site.register(Entrada, EntradaAdmin)
 admin.site.register(Material, MaterialAdmin)
-admin.site.register(ItemSaida)
-admin.site.register(Saida)
-admin.site.register(PessoaFisica)
+admin.site.register(Saida, SaidaAdmin)
+admin.site.register(PessoaFisica, PessoaFisicaAdmin)
+admin.site.register(Estoque)

@@ -10,7 +10,7 @@ class PessoaFisica(models.Model):
     email = models.EmailField()
 
     class Meta:
-        verbose_name_plural = 'Pessoa fisica'
+        verbose_name_plural = 'Pessoa Física'
 
     def __str__(self):
         return self.nome

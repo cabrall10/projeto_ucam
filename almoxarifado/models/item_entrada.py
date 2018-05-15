@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class ItemEntrada(models.Model):
@@ -16,3 +19,11 @@ class ItemEntrada(models.Model):
 
     def __str__(self):
         return "{} ({})".format(self.material.nome, self.entrada.nota_fiscal)
+
+    @receiver(post_save, sender='almoxarifado.ItemEntrada')
+    def adicionar_ao_estoque(sender, instance, **kwargs):
+        Estoque = apps.get_model('almoxarifado', 'Estoque')
+        try:
+            estoque = Estoque.objects.get(material=instance.material)
+        except Estoque.DoesNotExist:
+            import ipdb; ipdb.set_trace()

@@ -15,7 +15,7 @@ class Entrada(models.Model):
     data = models.DateField(null=True, blank=False)
 
     class Meta:
-        verbose_name_plural = 'Entrada de material'
+        verbose_name_plural = 'Entrada de Material'
 
     def __str__(self):
         return self.nota_fiscal
