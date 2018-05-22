@@ -25,5 +25,7 @@ class ItemEntrada(models.Model):
         Estoque = apps.get_model('almoxarifado', 'Estoque')
         try:
             estoque = Estoque.objects.get(material=instance.material)
+            estoque.quantidade += instance.quantidade
+            estoque.save()
         except Estoque.DoesNotExist:
-            import ipdb; ipdb.set_trace()
+            estoque = Estoque.objects.create(material=instance.material, quantidade=instance.quantidade)

@@ -6,3 +6,6 @@ from django.db import models
 class Estoque(models.Model):
     material = models.OneToOneField('Material',on_delete=models.CASCADE)
     quantidade = models.DecimalField(max_digits=8, decimal_places=3)
+
+    def __str__(self):
+        return '{} - {}'.format(self.material.nome, self.quantidade)

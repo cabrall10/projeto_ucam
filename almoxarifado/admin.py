@@ -3,15 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models.fornecedor import Fornecedor
-from .models.item_entrada import ItemEntrada
-from .models.unidade_medida import UnidadeMedida
-from .models.entrada import Entrada
-from .models.material import Material
-from .models.item_saida import ItemSaida
-from .models.pessoa_fisica import PessoaFisica
-from .models.saida import Saida
-from .models import Estoque
+from .models import *
 
 
 
