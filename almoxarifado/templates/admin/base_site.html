@@ -1,4 +1,5 @@
 {% extends "admin/base.html" %}
+{% load staticfiles %}
 
 {% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
@@ -13,7 +14,7 @@
     a:link, a:visited {
     color: #757575;
     }
-    
+
     div.breadcrumbs {
     background: #7f484e;
     color: #aaa;
@@ -42,7 +43,14 @@
 {% endblock %}
 
 {% block branding %}
+
+<a href="{% url 'admin:index' %}" class="django-admin-logo">
+    <!-- Django Administration -->
+    <img src="{% static "images/logo_ucam_teste2.png" %}" height="40px" alt="{{ site_header|default:_('Django Admin') }}" >
+
+</a>
 <h1 id="site-name"><a href="{% url 'admin:index' %}">Almoxarifado - UCAM</a></h1>
+
 {% endblock %}
 
 {% block nav-global %}{% endblock %}
