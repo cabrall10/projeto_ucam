@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>relatório de entrada de material</title>
+  <style>
+    body {
+      background-color: #f7f7f7;
+    }
+    p {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    .text-right {
+      text-align: right;
+    }
+  </style>
+</head>
+  <body>
+    {% for obj in objects %}
+      <h1 class="text-right">Nº {{ obj.id }}</h1>
+      <p><b>Nota Fiscal:</b> {{ obj.nota_fiscal }}</p>
+      <p><b>Fornecedor:</b> {{ obj.fornecedor.razao_social }}</p>
+      <p><b>Data:</b> {{ obj.data }}</p>
+      <p><b>Itens:</b></p>
+      {% for item in obj.itemEntrada_material.all %}
+        <p>{{ item.material.nome }} - R${{ item.valor }} - {{ item.quantidade }} {{item.material.unidade_medida.abreviacao}}<p>
+      {% endfor %}
+    {% endfor %}
+  </body>
+</html>

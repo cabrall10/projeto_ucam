@@ -39,6 +39,13 @@
     background: #7f484e;
     }
 
+.img {
+  margin-right: 20px;
+}
+    .img, #site-name {
+      float: left;
+    }
+
  </style>
 {% endblock %}
 
@@ -46,10 +53,11 @@
 
 <a href="{% url 'admin:index' %}" class="django-admin-logo">
     <!-- Django Administration -->
-    <img src="{% static "images/logo_ucam_teste2.png" %}" height="40px" alt="{{ site_header|default:_('Django Admin') }}" >
-
+    <img class="img" src="{% static "images/logo-ucam-branco.svg" %}" height="40px" alt="{{ site_header|default:_('Django Admin') }}" >
+    <h1 id="site-name"><a href="{% url 'admin:index' %}">Almoxarifado - UCAM</a></h1>
 </a>
-<h1 id="site-name"><a href="{% url 'admin:index' %}">Almoxarifado - UCAM</a></h1>
+<!-- codigo abaixo modifica o titulo da pagina inicial django admin -->
+<!--<h1 id="site-name"><a href="{% url 'admin:index' %}">Almoxarifado - UCAM</a></h1> -->
 
 {% endblock %}
 
