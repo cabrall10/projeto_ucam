@@ -41,10 +41,16 @@
 
 .img {
   margin-right: 20px;
-}
-    .img, #site-name {
+  }
+
+.img, #site-name {
+  float: left;
+  }
+
+  #content-main {
       float: left;
-    }
+      width: 100%;
+  }
 
  </style>
 {% endblock %}
@@ -58,6 +64,20 @@
 </a>
 <!-- codigo abaixo modifica o titulo da pagina inicial django admin -->
 <!--<h1 id="site-name"><a href="{% url 'admin:index' %}">Almoxarifado - UCAM</a></h1> -->
+
+{% endblock %}
+
+{% block content %}
+
+<div id="content-main">
+  <div class="app-almoxarifado module">
+    <table>
+      <caption>
+        <a href="/admin/" title="Relatorios">Relatorios</a>
+      </caption>
+    </table>
+  </div>
+</div>
 
 {% endblock %}
 
