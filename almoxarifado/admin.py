@@ -42,7 +42,7 @@ class EntradaAdmin(admin.ModelAdmin):
         html_string = render_to_string('reports/relatorio_entradas.html', {'objects': queryset})
         obj = datetime.now().timestamp()
 
-        html = HTML(string=html_string)
+        html = HTML(string=html_string, base_url=request.build_absolute_uri())
         html.write_pdf(target='/tmp/{}.pdf'.format(obj));
 
         fs = FileSystemStorage('/tmp')
