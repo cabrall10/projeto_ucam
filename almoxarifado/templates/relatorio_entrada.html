@@ -1,0 +1,87 @@
+{% extends "admin/base.html" %}
+{% load staticfiles %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+#alterando o html padrão do admin
+
+{% block extrastyle %}
+ <style>
+    #header { background-color: #7D212B; }
+    .module h2, .module caption, .inline-group h2 {
+      background-color: #7f484e;
+    }
+    a:link, a:visited {
+    color: #757575;
+    }
+
+    div.breadcrumbs {
+    background: #7f484e;
+    color: #aaa;
+    }
+
+    #changelist-filter li.selected a {
+    color: #7f484e !important;
+    }
+
+    <!-- cor de fundo do campo quantidade da pagina adicionar "item saida" -->
+    input, a.button {
+    background: "white";
+    }
+
+    .button, input[type="submit"],
+    input[type="button"], .submit-row input, a.button {
+    background: #7f484e;
+    }
+
+    .button.default, input[type="submit"].default,
+    .submit-row input.default {
+    background: #7f484e;
+    }
+
+.img {
+  margin-right: 20px;
+  }
+
+.img, #site-name {
+  float: left;
+  }
+
+  #content-main {
+      float: left;
+      width: 100%;
+  }
+
+ </style>
+{% endblock %}
+
+{% block branding %}
+
+<a href="{% url 'admin:index' %}" class="django-admin-logo">
+    <!-- Django Administration -->
+    <img class="img" src="{% static "images/logo-ucam-branco.svg" %}" height="40px" alt="{{ site_header|default:_('Django Admin') }}" >
+    <h1 id="site-name"><a href="{% url 'admin:index' %}">Almoxarifado - UCAM</a></h1>
+</a>
+
+<!-- codigo abaixo modifica o titulo da pagina inicial django admin -->
+<!--<h1 id="site-name"><a href="{% url 'admin:index' %}">Almoxarifado - UCAM</a></h1> -->
+
+
+{% endblock %}
+{% block content %}
+
+<div id="header">
+  <div id="branding">
+    <h1>Relatório de Entradas</h1>
+  </div>
+</div>
+
+<div id="menu">
+  <p>Selecione o inicio período: <input type="date"></p>
+  <p>Selecione o final período: <input type="date"></p>
+  <button type="submit" value="Submit">Gerar relatório</button>
+<div>
+
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
