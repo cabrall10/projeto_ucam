@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from almoxarifado import views
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^relatorio_entrada/', views.relatorio_entrada),
+    url(r'^relatorio_saida/', views.relatorio_saida),
+    url(r'^entradas/', views.entradas),
+
 ]
