@@ -19,6 +19,7 @@ class ItemEntradaAdmin(admin.TabularInline):
     model = ItemEntrada
     min_num = 1
     extra = 0
+    ordering = ["material__nome"]
 
 class ItemSaidaAdmin(admin.TabularInline):
     autocomplete_fields = ['material']
@@ -65,7 +66,7 @@ class UnidadeMedidaAdmin(admin.ModelAdmin):
     search_fields= ['nome', 'abreviacao']
     list_filter = ('abreviacao',)
 
-class PessoaFisicaAdmin(admin.ModelAdmin):
+class SetorAdmin(admin.ModelAdmin):
     search_fields = ['nome', 'cpf']
 
 @admin.register(ItemEntrada)
@@ -97,5 +98,5 @@ admin.site.register(UnidadeMedida, UnidadeMedidaAdmin)
 admin.site.register(Entrada, EntradaAdmin)
 admin.site.register(Material, MaterialAdmin)
 admin.site.register(Saida, SaidaAdmin)
-admin.site.register(PessoaFisica, PessoaFisicaAdmin)
+admin.site.register(Setor, SetorAdmin)
 admin.site.register(Estoque)

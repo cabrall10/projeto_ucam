@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Saida(models.Model):
-    solicitante = models.ForeignKey('PessoaFisica', related_name='saida_solicitante', on_delete=models.PROTECT)
+    solicitante = models.ForeignKey('Setor', related_name='saida_solicitante', on_delete=models.PROTECT)
     data = models.DateField(auto_now=True)
     observacao = models.TextField(blank=True)
 
