@@ -31,6 +31,21 @@ class SaidaAdmin(admin.ModelAdmin):
     autocomplete_fields = ['solicitante']
     inlines = (ItemSaidaAdmin,)
     list_filter = ('data',)
+    actions = ['relatorio_de_saidas',]
+
+    def relatorio_de_saidas(self, request, queryset):
+        html_string = render_to_string('reports/relatorio_saidas.html', {'objects': queryset})
+        obj = datetime.now().timestamp()
+
+        html = HTML(string=html_string, base_url=request.build_absolute_uri())
+        html.write_pdf(target='/tmp/{}.pdf'.format(obj));
+
+        fs = FileSystemStorage('/tmp')
+        with fs.open('{}.pdf'.format(obj)) as pdf:
+            response = HttpResponse(pdf, content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="{}.pdf"'.format(obj)
+        return response
+    relatorio_de_saidas.short_description = "Gerar relatório de saidas"
 
 class EntradaAdmin(admin.ModelAdmin):
     autocomplete_fields = ['fornecedor']

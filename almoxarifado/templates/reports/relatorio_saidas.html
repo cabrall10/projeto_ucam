@@ -1,0 +1,40 @@
+{% load staticfiles %}
+<html>
+<head>
+  <title>relatório de saída de material</title>
+  <style>
+    body {
+      background-color: #f7f7f7;
+    }
+    p {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    .text-right {
+      text-align: right;
+      font-size: 10px ;
+    }
+
+    .fundo-descricao{
+      background-color:#7f484e;
+      color:white;
+      padding:3px;
+    }
+  </style>
+</head>
+  <body>
+    <img src="{% static 'images/ucam5.png' %}" alt="LogoPdf"/>
+    {% for obj in objects %}
+      <h1 class="text-right"></h1>
+      <div class="fundo-descricao">
+        Descrição da Saída:
+      </div>
+      <p><b>Setor:</b> {{ obj.solicitante }}</p>
+      <p><b>Observacao:</b> {{ obj.observacao }}</p>
+      <p><b>Itens:</b></p>
+      {% for item in obj.itemSaida_material.all %}
+        <ul><p>{{ item.material }} - {{ item.quantidade }} {{item.material.unidade_medida.abreviacao}}<p></ul>
+      {% endfor %}
+    {% endfor %}
+  </body>
+</html>
