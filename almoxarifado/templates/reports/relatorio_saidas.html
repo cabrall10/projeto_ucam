@@ -32,8 +32,8 @@
       <p><b>Setor:</b> {{ obj.solicitante }}</p>
       <p><b>Observacao:</b> {{ obj.observacao }}</p>
       <p><b>Itens:</b></p>
-      {% for item in obj.itemSaida_material.all %}
-        <ul><p>{{ item.material }} - {{ item.quantidade }} {{item.material.unidade_medida.abreviacao}}<p></ul>
+      {% for item in obj.item_saida.all %}
+        <ul><p>{{ item.material }} - {{ item.quantidade }} <p></ul>
       {% endfor %}
     {% endfor %}
   </body>
