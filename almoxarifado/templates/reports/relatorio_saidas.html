@@ -1,40 +1,99 @@
 {% load staticfiles %}
 <html>
 <head>
-  <title>relatório de saída de material</title>
+  <title>Comprovante de Retirada - Almoxarifado UCAM</title>
   <style>
-    body {
-      background-color: #f7f7f7;
+
+    html {
+        height: 100%;
     }
+    body {
+      background-color: #fff;
+    }
+
     p {
       text-align: justify;
       text-justify: inter-word;
     }
-    .text-right {
-      text-align: right;
-      font-size: 10px ;
-    }
 
-    .fundo-descricao{
+    .titulo-descricao{
       background-color:#7f484e;
       color:white;
+      font-size: 12px ;
       padding:3px;
     }
+
+    .retirada-descricao{
+      font-size: 8px ;
+    }
+
+    .imagem{
+      width: 200px;
+      height: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 20px;
+      padding-top: 10px;
+    }
+
+    .rodape{
+      font-size: 8px ;
+      padding-top: 40px;
+
+    }
+    .separador{
+      height:1px;
+      border:none;
+      color:#000;
+      background-color:#000;
+      margin-top: 0px;
+      margin-bottom: 0px;"/>
+    }
+    .float {
+      float: right;
+    }
   </style>
+
 </head>
+
   <body>
-    <img src="{% static 'images/ucam5.png' %}" alt="LogoPdf"/>
-    {% for obj in objects %}
-      <h1 class="text-right"></h1>
-      <div class="fundo-descricao">
-        Descrição da Saída:
+
+      <div>
+      <img class="imagem" src="{% static 'images/ucam5.png' %}" alt="LogoPdf">
       </div>
-      <p><b>Setor:</b> {{ obj.solicitante }}</p>
-      <p><b>Observacao:</b> {{ obj.observacao }}</p>
-      <p><b>Itens:</b></p>
-      {% for item in obj.item_saida.all %}
-        <ul><p>{{ item.material }} - {{ item.quantidade }} <p></ul>
+      {% for obj in objects %}
+        <div class="titulo-descricao">
+          Comprovante de retirada de material do Almoxarifado:
+        </div>
+        <div class="retirada-descricao">
+          <p><b>Setor:</b> {{ obj.solicitante }}</p>
+          <hr class="separador">
+          <table>
+            <tr>
+              <th>Quantidade</th>
+              <th margin-right="100px">Produto</th>
+            </tr>
+          {% for item in obj.item_saida.all %}
+            <tr>
+              <td>{{ item.quantidade }}</td>
+              <td>{{ item.material }}</td>
+            </tr>
+          {% endfor %}
+          </table>
+          <hr class="separador">
+          <p><b>Observacao:</b> {{ obj.observacao }}</p>
+        </div>
       {% endfor %}
-    {% endfor %}
+
+      <div class="rodape">
+         __________________________<br>
+         Assinatura do requerente
+
+        <div class="float">
+          Data: _____________
+        </div>
+      </div>
+
   </body>
 </html>
