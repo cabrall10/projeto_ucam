@@ -84,7 +84,8 @@ class UnidadeMedidaAdmin(admin.ModelAdmin):
 class SetorAdmin(admin.ModelAdmin):
     search_fields = ['nome', 'cpf']
 
-@admin.register(ItemEntrada)
+# ativando este comando: @admin.register(ItemEntrada), registra na pagina inicial o modelo
+#Item Entrada 
 class ReportAdmin(DjangoObjectActions, admin.ModelAdmin):
     search_fields = ['entrada']
     list_display = ('material','quantidade')
