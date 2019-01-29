@@ -3,6 +3,7 @@
 <head>
   <title>relatório de entrada de material</title>
   <style>
+
     body {
       background-color: #f7f7f7;
     }
@@ -19,23 +20,52 @@
       background-color:#7f484e;
       color:white;
       padding:3px;
+      font-size: 12px ;
     }
+
+    .imagem{
+      width: 200px;
+      height: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 20px;
+      padding-top: 10px;
+    }
+
+    .texto-nota{
+      font-size: 8px ;
+    }
+
+    .separador{
+      height:1px;
+      border:none;
+      color:#000;
+      background-color:#000;
+      margin-top: 0px;
+      margin-bottom: 0px;"/>
+    }
+
   </style>
 </head>
   <body>
-    <img src="{% static 'images/ucam5.png' %}" alt="LogoPdf"/>
+
+    <img class = "imagem" src="{% static 'images/ucam5.png' %}" alt="LogoPdf"/>
     {% for obj in objects %}
-      <h1 class="text-right">Nº {{ obj.id }}</h1>
       <div class="fundo-descricao">
         Descrição da Nota: {{ obj.nota_fiscal }}
       </div>
-      <p><b>Nota Fiscal:</b> {{ obj.nota_fiscal }}</p>
-      <p><b>Fornecedor:</b> {{ obj.fornecedor.razao_social }}</p>
-      <p><b>Data:</b> {{ obj.data }}</p>
-      <p><b>Itens:</b></p>
-      {% for item in obj.itemEntrada_material.all %}
-        <ul><p>{{ item.material.nome }} - R${{ item.valor }} - {{ item.quantidade }} {{item.material.unidade_medida.abreviacao}}<p></ul>
-      {% endfor %}
+      <div class="texto-nota">
+        <p><b>Nota Fiscal:</b> {{ obj.nota_fiscal }}</p>
+        <p><b>Fornecedor:</b> {{ obj.fornecedor.razao_social }}</p>
+        <p><b>Data:</b> {{ obj.data }}</p>
+        <hr class="separador">
+        <p><b>Itens:</b></p>
+        {% for item in obj.itemEntrada_material.all %}
+          <ul><p>{{ item.material.nome }} - R${{ item.valor }} - {{ item.quantidade }} {{item.material.unidade_medida.abreviacao}}<p></ul>
+        {% endfor %}
+      </div>
     {% endfor %}
+
   </body>
 </html>
