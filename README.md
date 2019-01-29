@@ -1,6 +1,6 @@
 # Almoxarifado UCAM
 
-**Projeto desenvolvido para conclusão de curso na [universidade Cândido Mendes](https://www.ucam-campos.br/).**
+**Projeto desenvolvido para conclusão de curso na [Universidade Cândido Mendes](https://www.ucam-campos.br/).**
 
 Almoxarifado criado em Django para controle de estoque com as seguintes funcionalidades:
 
