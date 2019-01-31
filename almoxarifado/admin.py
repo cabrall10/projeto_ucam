@@ -84,10 +84,15 @@ class UnidadeMedidaAdmin(admin.ModelAdmin):
 class SetorAdmin(admin.ModelAdmin):
     search_fields = ['nome', 'cpf']
 
+#Mostra o campo quantidade do Modelo Estoque no site Admin
+class EstoqueAdmin(admin.ModelAdmin):
+    search_fields = ['material']
+    list_display = ('material','quantidade')
+
 # ativando este comando: @admin.register(ItemEntrada), registra na pagina inicial o modelo
-#Item Entrada 
+#Item Entrada
 class ReportAdmin(DjangoObjectActions, admin.ModelAdmin):
-    search_fields = ['entrada']
+    search_fields = ['entrada, material']
     list_display = ('material','quantidade')
 
     def generate_pdf(self, request, obj):
@@ -115,4 +120,4 @@ admin.site.register(Entrada, EntradaAdmin)
 admin.site.register(Material, MaterialAdmin)
 admin.site.register(Saida, SaidaAdmin)
 admin.site.register(Setor, SetorAdmin)
-admin.site.register(Estoque)
+admin.site.register(Estoque, EstoqueAdmin)
