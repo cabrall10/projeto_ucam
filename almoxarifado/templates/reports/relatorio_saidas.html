@@ -16,6 +16,10 @@
       text-justify: inter-word;
     }
 
+    h4 {
+      text-align: center;
+    }
+
     .titulo-descricao{
       background-color:#7f484e;
       color:white;
@@ -60,7 +64,8 @@
   <body>
 
       <div>
-      <img class="imagem" src="{% static "images/ucam5.png" %}" alt="LogoPdf">
+      <!-- <img class="imagem" src="{% static "images/ucam5.png" %}"> -->
+      <h4>Universidade Candido Mendes<h4/>
       </div>
       {% for obj in objects %}
         <div class="titulo-descricao">

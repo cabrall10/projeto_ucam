@@ -11,6 +11,11 @@
       text-align: justify;
       text-justify: inter-word;
     }
+
+    h4 {
+      text-align: center;
+    }
+    
     .text-right {
       text-align: right;
       font-size: 10px ;
@@ -50,7 +55,11 @@
 </head>
   <body>
 
-    <img class = "imagem" src="{% static "images/ucam5.png" %}" alt="LogoPdf"/>
+    <div>
+    <!-- <img class="imagem" src="{% static "images/ucam5.png" %}"> -->
+    <h4>Universidade Candido Mendes<h4/>
+    </div>
+
     {% for obj in objects %}
       <div class="fundo-descricao">
         Descrição da Nota: {{ obj.nota_fiscal }}
