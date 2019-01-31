@@ -88,6 +88,7 @@ class SetorAdmin(admin.ModelAdmin):
 class EstoqueAdmin(admin.ModelAdmin):
     search_fields = ['material']
     list_display = ('material','quantidade')
+    ordering = ["material__nome"]
 
 # ativando este comando: @admin.register(ItemEntrada), registra na pagina inicial o modelo
 #Item Entrada
