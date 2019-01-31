@@ -23,12 +23,12 @@
     .titulo-descricao{
       background-color:#7f484e;
       color:white;
-      font-size: 12px ;
+      font-size: 14px ;
       padding:3px;
     }
 
     .retirada-descricao{
-      font-size: 8px ;
+      font-size: 12px ;
     }
 
     .imagem{
@@ -42,7 +42,7 @@
     }
 
     .rodape{
-      font-size: 8px ;
+      font-size: 10px ;
       padding-top: 40px;
 
     }
@@ -73,6 +73,7 @@
         </div>
         <div class="retirada-descricao">
           <p><b>Setor:</b> {{ obj.solicitante }}</p>
+          <p><b>Data:</b> {{ obj.data }}</p>
           <hr class="separador">
           <table>
             <tr>
@@ -81,13 +82,13 @@
             </tr>
           {% for item in obj.item_saida.all %}
             <tr>
-              <td>{{ item.quantidade }}</td>
+              <td>{{ item.quantidade }} {{ item.material.unidade_medida.abreviacao }}</td>
               <td>{{ item.material }}</td>
             </tr>
           {% endfor %}
           </table>
           <hr class="separador">
-          <p><b>Observacao:</b> {{ obj.observacao }}</p>
+          <p><b>Observação:</b> {{ obj.observacao }}</p>
         </div>
       {% endfor %}
 
