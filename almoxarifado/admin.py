@@ -72,10 +72,13 @@ class EntradaAdmin(admin.ModelAdmin):
 class FornecedorAdmin(admin.ModelAdmin):
     search_fields = ['razao_social', 'segmento']
     list_filter = ('segmento',)
+    ordering = ["razao_social"]
 
 class MaterialAdmin(admin.ModelAdmin):
     search_fields= ['nome', 'categoria']
     list_filter = ('categoria',)
+    ordering = ["nome"]
+
 
 class UnidadeMedidaAdmin(admin.ModelAdmin):
     search_fields= ['nome', 'abreviacao']
@@ -83,6 +86,7 @@ class UnidadeMedidaAdmin(admin.ModelAdmin):
 
 class SetorAdmin(admin.ModelAdmin):
     search_fields = ['nome', 'cpf']
+    ordering = ["nome"]
 
 #Mostra o campo quantidade do Modelo Estoque no site Admin
 class EstoqueAdmin(admin.ModelAdmin):
